@@ -3,9 +3,9 @@
 {% block content %}
 
 <div class="jumbotron">
-    <h1>Журнал</h1>
-    <p class="lead"></p>
-    <p><a href="{{ url_for('showjournal') }}" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <h2>Журнал</h2>
+    <p class="lead">Список всех оценок, отсортированных попредметно можно посмотреть ...</p>
+    <p><a href="{{ url_for('showjournal') }}" class="btn btn-primary btn-large">Тут &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -19,18 +19,24 @@
         <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
+       <h2>Средний балл по Студенту</h2>
+        <ul class="list-group">
+
+            {% for student_stat in students_stats %}
+                <li class="list-group-item">{{ student_stat[1] + ' - ' + student_stat[0] }}  </li>
+            {% endfor %}
+</ul>
+        <p class="parent"><a class="btn btn-default" href="{{ url_for('showstudent') }}">Открыть список &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        
+        <h2>Средний балл по Предмету</h2>
         <ul class="list-group">
 
             {% for predmet_stat in predmet_stats %}
                 <li class="list-group-item">{{ predmet_stat[1] + ' - ' + predmet_stat[0] }}  </li>
             {% endfor %}
 </ul>
+        <p class="parent"><a class="btn btn-default" href="{{ url_for('showpredmet') }}">Открыть список &raquo;</a></p>
     </div>
 </div>
 

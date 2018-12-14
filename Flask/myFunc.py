@@ -34,7 +34,7 @@ def add_otdel(otdel_name):
     writeToBase(base)
 
 
-def getStat():
+def getStatByPredmet():
     base = return_base()
     predmets = base[2]
     balls = base[1]
@@ -51,3 +51,19 @@ def getStat():
         predmet_list.append([string,predmet[0]])
     return predmet_list
 
+def getStatByStudent():
+    base = return_base()
+    students = base[0]
+    balls = base[1]
+
+    student_list = []
+    for student in students:
+        count = 0
+        summ = 0
+        for ball in balls:
+            if student[3] == ball[2]:
+                count+=1
+                summ+=int(ball[0])
+        string = '{:.4}'.format(str(summ/count))
+        student_list.append([string,student[0]+' '+student[1]+' '+student[2]])
+    return student_list

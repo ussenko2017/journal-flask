@@ -16,11 +16,14 @@ posts = []
 @app.route('/home')
 def home():
     """Renders the home page."""
-    predmet_stats = myFunc.getStat()
+    predmet_stats = myFunc.getStatByPredmet()
+    students_stats = myFunc.getStatByStudent()
     return render_template(
         'index.html',
         title='hi',
-        year=datetime.now().year,predmet_stats=predmet_stats
+        year=datetime.now().year,
+        predmet_stats=predmet_stats,
+        students_stats=students_stats
     )
 
 @app.route('/contact')

@@ -5,11 +5,12 @@
 {% for predmet in predmets %}
 <div class="jumbotron">
 <h3 >Предмет: {{ predmet[0] }}</h3>
+
 <table  class="table table-condensed">
     <thead>
         <tr>
-            <th>Студент</th>
-            <th>Оценка</th>
+            <th><h4><b>Студент</b></h4></th>
+            <th><h4><b>Оценка</b></h4></th>
         </tr>
     </thead>
         <tbody>
@@ -18,8 +19,8 @@
         {% if predmet[2] == ball[4] %}
 
                 <tr>
-                    <td>{{ ball[1] }}</td>
-                    <td>{{ ball[0] }}</td>
+                    <td><h5>{{ ball[1] }}</h5></td>
+                    <td><h5>{{ ball[0] }}</h5></td>
 
                 </tr>
         {% endif %}
