@@ -12,8 +12,8 @@ import random
 
 
 posts = []
-@app.route('/')
-@app.route('/home')
+@app.route('/',methods=['GET','POST'])
+@app.route('/home',methods=['GET','POST'])
 def home():
     """Renders the home page."""
     predmet_stats = myFunc.getStatByPredmet()
@@ -45,27 +45,27 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
-@app.route('/'+config.token+'/addball/<ball>/<id_stud>/<id_pred>',methods=['GET'])
+@app.route('/'+config.token+'/addball/<ball>/<id_stud>/<id_pred>',methods=['GET','POST'])
 def addball(ball,id_stud,id_pred):
     myFunc.add_ball(str(ball),str(id_stud),str(id_pred))
     return ball+ ' ' +id_stud + ' ' + id_pred
 
-@app.route('/'+config.token+'/addstudent/<first>/<last>/<patr>',methods=['GET'])
+@app.route('/'+config.token+'/addstudent/<first>/<last>/<patr>',methods=['GET','POST'])
 def addstudent(first,last,patr):
     myFunc.add_stud(first,last,patr)
     return first + ' ' + last + ' ' + patr
 
-@app.route('/'+config.token+'/addpredmet/<predmet_name>/<kolvo_chasov>',methods=['GET'])
+@app.route('/'+config.token+'/addpredmet/<predmet_name>/<kolvo_chasov>',methods=['GET','POST'])
 def addpredmet(predmet_name,kolvo_chasov):
     myFunc.add_predmet(predmet_name,str(kolvo_chasov))
     return predmet_name + ' ' + kolvo_chasov
 
-@app.route('/'+config.token+'/addotdel/<otdel_name>',methods=['GET'])
+@app.route('/'+config.token+'/addotdel/<otdel_name>',methods=['GET','POST'])
 def addotdel(otdel_name):
     myFunc.add_otdel(otdel_name)
     return otdel_name
 
-@app.route('/balls')
+@app.route('/balls',methods=['GET','POST'])
 def showball():
     base = myFunc.return_base()
     balls = base[1]
@@ -84,7 +84,7 @@ def showball():
         year=datetime.now().year
     )
 
-@app.route('/journal')
+@app.route('/journal',methods=['GET','POST'])
 def showjournal():
     base = myFunc.return_base()
     balls = base[1]
@@ -106,7 +106,7 @@ def showjournal():
 
 
 
-@app.route('/students')
+@app.route('/students',methods=['GET','POST'])
 def showstudent():
     base = myFunc.return_base()
     students = base[0]
@@ -116,7 +116,7 @@ def showstudent():
         year=datetime.now().year
     )
 
-@app.route('/predmets')
+@app.route('/predmets',methods=['GET','POST'])
 def showpredmet():
     base = myFunc.return_base()
     predmets = base[2]
@@ -127,7 +127,7 @@ def showpredmet():
         #
     )
 
-@app.route('/otdels')
+@app.route('/otdels',methods=['GET','POST'])
 def showotdel():
     base = myFunc.return_base()
     otdels = base[3]
@@ -137,13 +137,13 @@ def showotdel():
         year=datetime.now().year
     )
 
-@app.route('/getbase')
+@app.route('/getbase',methods=['GET','POST'])
 def getBase():
         with open("bd.json", "r", encoding="utf-8") as opened_file:
             file = json.load(opened_file)
         return jsonify(file)
 
-@app.route('/autoadd')
+@app.route('/autoadd',methods=['GET','POST'])
 def autoadd():
     for j in range(10):
         myFunc.add_predmet('Предмет №' + str(j), str(random.randint(24, 89)))

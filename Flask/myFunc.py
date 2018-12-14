@@ -67,3 +67,4 @@ def getStatByStudent():
         string = '{:.4}'.format(str(summ/count))
         student_list.append([string,student[0]+' '+student[1]+' '+student[2]])
     return student_list
+
