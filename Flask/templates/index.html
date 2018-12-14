@@ -3,9 +3,9 @@
 {% block content %}
 
 <div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <h1>Журнал</h1>
+    <p class="lead"></p>
+    <p><a href="{{ url_for('showjournal') }}" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -27,8 +27,8 @@
         
         <ul class="list-group">
 
-            {% for post in posts %}
-                <li class="list-group-item">{{ post }}  </li>
+            {% for predmet_stat in predmet_stats %}
+                <li class="list-group-item">{{ predmet_stat[1] + ' - ' + predmet_stat[0] }}  </li>
             {% endfor %}
 </ul>
     </div>

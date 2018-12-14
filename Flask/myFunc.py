@@ -32,3 +32,22 @@ def add_otdel(otdel_name):
     id_otdel = len(base[3])
     base[3].append([otdel_name,str(id_otdel)])
     writeToBase(base)
+
+
+def getStat():
+    base = return_base()
+    predmets = base[2]
+    balls = base[1]
+
+    predmet_list = []
+    for predmet in predmets:
+        count = 0
+        summ = 0
+        for ball in balls:
+            if predmet[2] == ball[1]:
+                count+=1
+                summ+=int(ball[0])
+        string = '{:.4}'.format(str(summ/count))
+        predmet_list.append([string,predmet[0]])
+    return predmet_list
+

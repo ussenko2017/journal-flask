@@ -16,10 +16,11 @@ posts = []
 @app.route('/home')
 def home():
     """Renders the home page."""
+    predmet_stats = myFunc.getStat()
     return render_template(
         'index.html',
         title='hi',
-        year=datetime.now().year,posts=posts
+        year=datetime.now().year,predmet_stats=predmet_stats
     )
 
 @app.route('/contact')
@@ -79,6 +80,28 @@ def showball():
         balls=spisok_ball,
         year=datetime.now().year
     )
+
+@app.route('/journal')
+def showjournal():
+    base = myFunc.return_base()
+    balls = base[1]
+    students = base[0]
+    predmets = base[2]
+    spisok_ball = []
+    for student in students:
+        for predmet in predmets:
+            for ball in balls:
+                if ball[2] == student[3] and ball[1] == predmet[2]:
+                    spisok_ball.append([ball[0], student[0] + ' ' + student[1] + ' ' + student[2],predmet[0],ball[3],ball[1]])
+
+    return render_template(
+        'journal.html',
+        balls=spisok_ball,
+        year=datetime.now().year,
+        predmets=predmets
+    )
+
+
 
 @app.route('/students')
 def showstudent():
