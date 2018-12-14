@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1>Список отделений</h1>
+    <table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Название</th>
+
+        </tr>
+    </thead>
+        <tbody>
+        {% for otdel in otdels %}
+
+          <tr>
+            <td>{{ otdel[1]  }}</td>
+            <td>{{ otdel[0] }}</td>
+
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+{% endblock %}

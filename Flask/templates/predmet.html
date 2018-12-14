@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1>Список предметов</h1>
+    <table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Название</th>
+            <th>Количество часов</th>
+
+        </tr>
+    </thead>
+        <tbody>
+        {% for predmet in predmets %}
+
+          <tr>
+            <td>{{ predmet[2]  }}</td>
+            <td>{{ predmet[0] }}</td>
+            <td>{{ predmet[1] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+{% endblock %}
